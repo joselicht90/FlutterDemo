@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
-import 'package:startup_namer/mydrawer.dart';
+import 'mydrawer.dart';
 
 class RandomWordsState extends State<RandomWords> {
   final _saved = Set<WordPair>();

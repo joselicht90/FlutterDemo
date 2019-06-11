@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:startup_namer/randomwords.dart';
+import 'randomwords.dart';
 import 'item_details.dart';
 import 'item.dart';
 

@@ -1,4 +1,4 @@
-import 'package:startup_namer/mydrawer.dart';
+import 'mydrawer.dart';
 
 import 'item.dart';
 import 'package:flutter/material.dart';

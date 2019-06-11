@@ -18,28 +18,25 @@ class MyApp extends StatelessWidget {
 }
 
 class LoginPage extends StatelessWidget {
-  
-  static final TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
+  static final TextStyle style =
+      TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
 
   final emailField = TextField(
-      style: style,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Email",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+    style: style,
+    decoration: InputDecoration(
+        contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+        hintText: "Email",
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
   );
 
   final passwordField = TextField(
-      obscureText: true,
-      style: style,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Password",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+    obscureText: true,
+    style: style,
+    decoration: InputDecoration(
+        contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+        hintText: "Password",
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
   );
-
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +47,7 @@ class LoginPage extends StatelessWidget {
           child: Container(
             child: Padding(
               padding: const EdgeInsets.all(36.0),
-              child:  Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -77,14 +74,17 @@ class LoginPage extends StatelessWidget {
                     child: MaterialButton(
                       minWidth: MediaQuery.of(context).size.width,
                       padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                      onPressed: () { Navigator.pushReplacement(context, 
-                          MaterialPageRoute(builder: (context)=>MyHomePage())
-                        );
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MyHomePage()));
                       },
                       child: Text("Login",
                           textAlign: TextAlign.center,
                           style: style.copyWith(
-                              color: Colors.white, fontWeight: FontWeight.bold)),
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
                     ),
                   ),
                   SizedBox(
@@ -99,11 +99,6 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
 
 // import 'package:flutter/material.dart';
 // import 'package:startup_namer/mydrawer.dart';
@@ -129,9 +124,75 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ListTile listTile = ListTile(
+      contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+      leading: Container(
+        padding: EdgeInsets.only(right: 12.0),
+        decoration: new BoxDecoration(
+            border: new Border(
+                right: new BorderSide(width: 1.0, color: Colors.white24))),
+        child: Icon(Icons.autorenew, color: Colors.white),
+      ),
+      title: Text(
+        'PROBANDO',
+        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+      ),
+      // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
+
+      subtitle: Row(
+        children: <Widget>[
+          Expanded(
+              flex: 1,
+              child: Container(
+                // tag: 'hero',
+                child: LinearProgressIndicator(
+                    backgroundColor: Color.fromRGBO(209, 224, 224, 0.2),
+                    valueColor: AlwaysStoppedAnimation(Colors.green)),
+              )),
+          Expanded(
+            flex: 4,
+            child: Padding(
+                padding: EdgeInsets.only(left: 10.0),
+                child: Text('PRUEBA', style: TextStyle(color: Colors.white))),
+          )
+        ],
+      ),
+    );
     return Scaffold(
-      appBar: AppBar(title: Text('Prueba')),
-      body: Center(child: Text('My Page!')),
+      appBar: AppBar(
+        title: Text('Flutter Demo Playground'),
+        elevation: 8.0,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              padding: const EdgeInsets.all(5.0),
+              margin: const EdgeInsets.only(bottom: 10),
+              width: MediaQuery.of(context).size.width,
+              height: 300,
+              decoration: BoxDecoration(
+                color: Colors.white,
+              ),
+              child: Card(
+                elevation: 5.0,
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(5.0),
+              width: MediaQuery.of(context).size.width,
+              height: 300,
+              decoration: BoxDecoration(
+                color: Colors.white,
+              ),
+              child: Card(
+                elevation: 5.0,
+              ),
+            ),
+          ],
+        ),
+      ),
       drawer: MyDrawer(),
     );
   }
