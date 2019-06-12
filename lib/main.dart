@@ -246,14 +246,18 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
     );
-    Widget _buildPagoTipo(String fechaPago, String iaPgo, String jurisdiccion,{Function() onTap}) {
-      return Material(
-          elevation: 14.0,
+    Widget _buildPagoTipo(String fechaPago, String iaPgo, String jurisdiccion,
+        {Function() onTap}) {
+      return Container(
+        padding: const EdgeInsets.all(5.0),
+        width: 300,
+        margin: const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 25.0),
+        child: Material(
+          elevation: 8.0,
           borderRadius: BorderRadius.circular(12.0),
           shadowColor: Color(0x802196F3),
           child: Container(
             padding: const EdgeInsets.all(5.0),
-            width: 300,
             decoration: new BoxDecoration(
               border: Border(
                 top: BorderSide(
@@ -263,79 +267,72 @@ class MyHomePage extends StatelessWidget {
                 ),
               ),
             ),
-            margin: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 30.0),
-            child: Material(
-              // elevation: 14.0,
-              borderRadius: BorderRadius.circular(12.0),
-              shadowColor: Color(0x802196F3),
-              child: Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: Row(
-                        children: <Widget>[
-                          Text('Fecha de Pago:   ',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700,
-                              )),
-                          Expanded(
-                            child: Text(fechaPago,
-                                textAlign: TextAlign.end,
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 15.0)),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: Row(
-                        children: <Widget>[
-                          Text('Importe Total:   ',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700,
-                              )),
-                          Expanded(
-                            child: Text(iaPgo,
-                                textAlign: TextAlign.end,
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 15.0)),
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: Text('Jurisdiccion:   ',
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Row(
+                    children: <Widget>[
+                      Text('Fecha de Pago:   ',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 15,
                             fontWeight: FontWeight.w700,
                           )),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 10.0),
-                        child: Text(jurisdiccion,
-                            textAlign: TextAlign.start,
-                            //softWrap: true,
-                            overflow: TextOverflow.visible,
+                      Expanded(
+                        child: Text(fechaPago,
+                            textAlign: TextAlign.end,
                             style:
                                 TextStyle(color: Colors.black, fontSize: 15.0)),
                       ),
-                    )
-                  ],
+                    ],
+                  ),
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Row(
+                    children: <Widget>[
+                      Text('Importe Total:   ',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700,
+                          )),
+                      Expanded(
+                        child: Text(iaPgo,
+                            textAlign: TextAlign.end,
+                            style:
+                                TextStyle(color: Colors.black, fontSize: 15.0)),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Text('Jurisdiccion:   ',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                      )),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Text(jurisdiccion,
+                        textAlign: TextAlign.start,
+                        //softWrap: true,
+                        overflow: TextOverflow.visible,
+                        style: TextStyle(color: Colors.black, fontSize: 15.0)),
+                  ),
+                )
+              ],
             ),
-          ));
+          ),
+        ),
+      );
     }
 
     return Scaffold(
@@ -351,21 +348,31 @@ class MyHomePage extends StatelessWidget {
             children: <Widget>[
               facturasPorCobrar,
               pagosRecibidos,
+              Divider(
+                color: Colors.grey,
+                height: 2,
+              ),
               Text(
                 'Ultimos Pagos',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              SizedBox(
-                height: 200.0,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  children: <Widget>[
-                    _buildPagoTipo('01/01/2019', '\$9.999',
-                        'TESORERIA GRAL DE LA PROVINCIA DE BS AS. ORGANISMO DE LA CONSTITUCION'),
-                    _buildPagoTipo('01/01/2019', '\$9.999',
-                        'TESORERIA GRAL DE LA PROVINCIA DE BS AS'),
-                  ],
+              
+              Container(
+                //color: Colors.green,
+                height: 200,
+                //margin: const EdgeInsets.only(bottom: ),
+                child: SizedBox(
+                  height: 150.0,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: false,
+                    children: <Widget>[
+                      _buildPagoTipo('01/01/2019', '\$9.999',
+                          'TESORERIA GRAL DE LA PROVINCIA DE BS AS. ORGANISMO DE LA CONSTITUCION'),
+                      _buildPagoTipo('01/01/2019', '\$9.999',
+                          'TESORERIA GRAL DE LA PROVINCIA DE BS AS'),
+                    ],
+                  ),
                 ),
               ),
             ],
