@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/homepage.dart';
-import 'randomwords.dart';
+import 'package:flutter_demo/searchFacturas.dart';
 
 class MyDrawer extends StatefulWidget {
   @override
@@ -18,9 +18,37 @@ class _MyDrawer extends State<MyDrawer> {
             // ListView contains a group of widgets that scroll inside the drawer
             child: ListView(
               children: <Widget>[
-                UserAccountsDrawerHeader(),
-                Text('In list view'),
-                Text('In list view too'),
+                UserAccountsDrawerHeader(
+                  accountName: Text(
+                    'José Ignacio Licht',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15),
+                  ),
+                  accountEmail: Text("20-35351995-7"),
+                  currentAccountPicture: CircleAvatar(
+                    backgroundColor: Color(0xFF40a798),
+                    radius: 30.0,
+                    backgroundImage: AssetImage('img/avatar.png'),
+                  ),
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('img/drawerHeader3.png'),
+                        fit: BoxFit.cover),
+                    //color: Color(0xFF307e73),
+                  ),
+                ),
+                _buildTile('Inicio', Icon(Icons.home),
+                    MaterialPageRoute(builder: (BuildContext context) {
+                  return MyHomePage();
+                })),
+                Divider(),
+                _buildTile('Buscar Facturas', Icon(Icons.format_list_numbered),
+                    MaterialPageRoute(builder: (BuildContext context) {
+                  return SearchFacturas();
+                })),
+                Divider(),
               ],
             ),
           ),
@@ -36,61 +64,10 @@ class _MyDrawer extends State<MyDrawer> {
                     children: <Widget>[
                       Divider(),
                       ListTile(
-                          leading: Icon(Icons.settings),
-                          title: Text('Settings')),
-                      ListTile(
-                          leading: Icon(Icons.help),
-                          title: Text('Help and Feedback'))
+                          leading: Icon(Icons.exit_to_app),
+                          title: Text('Cerrar Sesión')),
                     ],
-                  )
-                )
-              )
-            )
-        ],
-      ),
-    );
-    return Drawer(
-      child: ListView(
-        // Important: Remove any padding from the ListView.
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          UserAccountsDrawerHeader(
-            accountName: Text(
-              'José Ignacio Licht',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15),
-            ),
-            accountEmail: Text("20-35351995-7"),
-            currentAccountPicture: CircleAvatar(
-              backgroundColor: Color(0xFF40a798),
-              radius: 30.0,
-              backgroundImage: AssetImage('img/avatar.png'),
-            ),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('img/drawerHeader3.png'),
-                  fit: BoxFit.cover),
-              //color: Color(0xFF307e73),
-            ),
-          ),
-          _buildTile('Inicio', Icon(Icons.home), MaterialPageRoute(builder: (BuildContext context){ return MyHomePage();})),
-          Divider(),
-          _buildTile('Item 2', Icon(Icons.monetization_on), MaterialPageRoute(builder: (BuildContext context){ return RandomWords();})),
-          Divider(),
-          // Container(
-            
-          //   alignment: Alignment.bottomCenter,
-          //   child: Text('Cerrar Sesión'),
-          // ),
-          
-          // Container(
-          //   child: Align(
-          //     alignment: Alignment.bottomCenter,
-          //     child: Text('Cerrar Sesión'),
-          //   ),
-          // )
+                  ))))
         ],
       ),
     );
@@ -101,7 +78,7 @@ class _MyDrawer extends State<MyDrawer> {
       leading: icono,
       title: Text(titulo),
       onTap: () {
-        Navigator.push(context,ruta);
+        Navigator.push(context, ruta);
       },
     );
   }
