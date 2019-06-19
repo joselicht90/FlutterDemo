@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/mydrawer.dart';
 import 'package:date_format/date_format.dart';
 import 'dart:async';
+import 'resultadoBusqueda.dart';
 import 'package:date_range_picker/date_range_picker.dart' as DateRangePicker;
 
 class SearchFacturas extends StatefulWidget {
@@ -74,6 +75,7 @@ class _SearchFacturas extends State<SearchFacturas> {
                     },
                   ),
                 ),
+                Divider(),
                 Container(
                   margin: const EdgeInsets.only(top: 50),
                   child: Column(
@@ -156,7 +158,9 @@ class _SearchFacturas extends State<SearchFacturas> {
           child: MaterialButton(
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){return ResultadoBusqueda();}));
+            },
             child: Text("Buscar",
                 textAlign: TextAlign.center,
                 style: TextStyle(fontFamily: 'Montserrat', fontSize: 20.0)
