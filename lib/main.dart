@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'homepage.dart';
 
 void main() => runApp(MyApp());
@@ -10,6 +11,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: LoginPage(),
+      localizationsDelegates: [
+        //provides localised strings
+        GlobalMaterialLocalizations.delegate,
+        //provides RTL support
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale("es", "AR"),
+      ],
       theme: ThemeData(
         primaryColor: Color(0xFF40a798),
         secondaryHeaderColor: Color(0xFF40a798),
