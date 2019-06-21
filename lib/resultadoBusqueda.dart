@@ -72,7 +72,7 @@ class ResultadoBusqueda extends StatelessWidget {
                         juri,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 18),
-                        overflow: TextOverflow.visible,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ],
